@@ -12,26 +12,54 @@ const pokemonList = [
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
   },
   {
+    name: "charmander",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+  },
+  {
+    name: "squirtle",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+  },
+  {
+    name: "pikachu",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+  },
+  {
     name: "mew",
   },
 ];
 
 
-const App = () => {
+function App() {
+  const [pokemonIndex, setPokemonIndex] = useState(2)
 
+  const ShowPrevious = () => {
+    setPokemonIndex(pokemonIndex - 1);
+  };
 
-
+  const NextPrevious = () => {
+    setPokemonIndex(pokemonIndex + 1);
+  };
   return (
     <div className="App">
-      <PokemonCard pokemon={pokemonList[0]} />
-    </div>
+      <nav>
+        {pokemonIndex > 0 && (<button type='button' onClick={ShowPrevious}>Previous</button>)}
 
+        {pokemonIndex < pokemonList.length - 1 && (<button type='button' onClick={NextPrevious}>Next</button>)}
+
+      </nav>
+
+      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
+
+
+    </div>
   )
+
 }
 
 
 
 
-
-
-export default App
+export default App;
